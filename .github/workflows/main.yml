@@ -114,18 +114,18 @@ jobs:
     - name: Package
       run: |
         cd build/install
-        tar -czf ../../clang20-android-arm64.tar.gz .
+        tar -czf ../../clang-r547379.tar.gz
 
     - name: Set Version
       id: version
-      run: echo "tag=clang20-android-arm64-$(date +'%Y%m%d-%H%M')" >> "$GITHUB_OUTPUT"
+      run: echo "v1.0.0" >> "$GITHUB_OUTPUT"
 
     - name: Create Release
       uses: softprops/action-gh-release@v2
       with:
         tag_name: ${{ steps.version.outputs.tag }}
-        name: Clang 20 Android ARM64 - ${{ steps.version.outputs.tag }}
-        files: clang20-android-arm64.tar.gz
+        name: Release v1.0.0 - ${{ steps.version.outputs.tag }}
+        files: clang-r547379.tar.gz
         body: |
           🔧 **broman Clang 20 for Android ARM64 Kernel Compilation**
           - Default host target: x86_64-linux-gnu
